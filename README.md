@@ -1,24 +1,41 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# 色好き集まれ！
+​
+## サイト概要
+### サイトテーマ
+色を通して様々な価値観と交流できるコミュニティサイト
+​
+### テーマを選んだ理由
+私はミントグリーンと水色が大好きです。なので、その色の雑貨やを集める為、様々なサイトや店舗に行きます。
+しかし、どの店舗も女性用のアイテムがほぼピンク一択なのです。 世の中の大抵の女性がピンク好きなのはわかります。事実として、色彩心理では、ピンクは、女性ホルモンの分泌を促し、肌に潤いをもたらすという効力があります。なので、ピンクは女性そのものと言える色なのです。
+ですが、私はピンクが好きでは無い為、よく困ってしまいます。
+男性なら黒や青、女性ならピンクや赤等と言った色の先入観、価値観が日本は特に強いと感じました。
+その事に捉われずに、さまざまな人と意見交換ができたら楽しいのではないかと思いこのサイトを作成しました。
+また、このサービスを通して、交流が生まれるだけでなく、日本社会の色への先入観も変えていけたらいいと思いこのサイトを作りました。
+​
+### 実装機能
+* ゲストログイン機能
+* 投稿検索機能(キーワード・タグ検索)
+* いいね(ブックマーク)と一覧表示機能
+* コメント機能
+* ユーザ検索機能
+​
+### ターゲットユーザ
+- 新しい価値観と触れてみたい、交流してみたい人
+- 色の先入観に疲弊している人
+​
+### 主な利用シーン
+- 自分が好きな色にはどんな人がいるのか知りたい時
+- 異なる色が好きな人がどんな考えでその色が好きなのか知りたい時
+​
+## 設計書
+後程作成予定
+​
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
+​
+## 使用素材
+- 現在いらすとや (https://www.irasutoya.com/) を使用検討中です
