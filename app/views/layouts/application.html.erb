@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Irozukiatsumare</title>
+    <title>Irozukiastumare</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,9 +10,14 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    
-    <%= yield %>
+    <%= render 'layouts/header' %>
+      <main>
+        <p id="notice"><%= flash[:notice] %></p>
+        <div class="d-flex justify-content-center mb-2">
+        </div>
+      </main>
+      <%= yield %>
+    <%= render 'layouts/footer' %>
   </body>
 </html>
