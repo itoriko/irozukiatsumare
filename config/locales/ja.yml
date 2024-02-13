@@ -8,7 +8,7 @@ ja:
         birth_date: 生年月日
         occupation: 職業欄
         email: メールアドレス
-        encrypted_password: パスワード
+        password: パスワード
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

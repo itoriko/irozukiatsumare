@@ -3,6 +3,12 @@
 class Public::SessionsController < Devise::SessionsController
   before_action :user_state, only: [:create]
 
+  def guest_sign_in
+    user = User.guest
+    sign_in user
+    redirect_to user_path(user), notice: "ゲストユーザーでログインしました。"
+  end
+
   # GET /resource/sign_in
   # def new
   #   super
@@ -21,7 +27,7 @@ class Public::SessionsController < Devise::SessionsController
   protected
 
   def after_sign_in_path_for(resource)
-   users_my_page_path
+    user_path(resource)
   end
 
   def user_state
@@ -29,7 +35,7 @@ class Public::SessionsController < Devise::SessionsController
     return if @user.nil?
     return unless @user.valid_password?(params[:user][:password])
 
-    if !@user.active?
+    if !@user.is_active?
       redirect_to new_user_session
       return
     else

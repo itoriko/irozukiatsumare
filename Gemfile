@@ -63,6 +63,3 @@ gem 'devise'
 
 gem "enum_help"
 
-# パスワードを保存する際に暗号化し、セキュリティを高める
-gem 'bcrypt'
-

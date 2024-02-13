@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'uers/show'
-    get 'uers/edit'
-    get 'uers/unsubscribe'
-  end
+
   # ユーザ用
   # URL /users/sign_in ...
   devise_for :users,skip: [:passwords], controllers: {
@@ -17,6 +13,11 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
+  # ゲストログイン用ルーティング
+  devise_scope :user do
+  post "users/guest_sign_in", to: "public/sessions#guest_sign_in", as: 'guest_sign_in'
+  end
+
   namespace :admin do
     root to: "homes#top"
     resources :users, only: [:index, :show, :edit, :update]
@@ -24,10 +25,11 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to: "homes#top"
-    get 'users/my_page' => 'users#show'
-    get 'users/infomation/edit' => 'users#edit'
-    patch 'users/information' => 'users#update'
-    get 'users/unsubscribe' => 'users#unsubscribe'
-    patch 'users/withdraw' => 'users#withdraw'
+    resources :users do
+      collection do
+        get 'users/unsubscribe', to: 'users#unsubscribe', as: 'unsubscribe'
+        patch 'users/withdraw', to: 'users#withdraw', as: 'withdraw'
+      end
+    end
   end
 end

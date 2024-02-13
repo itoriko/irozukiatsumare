@@ -32,8 +32,8 @@ ActiveRecord::Schema.define(version: 2024_02_07_050738) do
     t.datetime "remember_created_at"
     t.string "user_name", null: false
     t.string "user_name_kana", null: false
-    t.text "introduction", null: false
-    t.date "birth_date", null: false
+    t.text "introduction"
+    t.date "birth_date"
     t.string "occupation", null: false
     t.boolean "is_active", default: true, null: false
     t.datetime "created_at", precision: 6, null: false

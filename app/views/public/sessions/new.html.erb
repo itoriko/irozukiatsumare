@@ -1,26 +1,44 @@
-<h2>Log in</h2>
+<div class="container">
+  <div class="row">
+    <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
+      <div class="mx-auto w-50 bg-light text-center">
+        <p>ログイン</p>
+      </div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+      <div class="mx-auto w-50 bg-light text-center">
+        <p>会員の方はこちらからログイン</p>
+      </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <table class="mx-auto">
+       <tr>
+         <td><%= f.label :email, "メールアドレス" %></td>
+         <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+       </tr>
+
+       <tr>
+        <td><%= f.label :password, "パスワード（6文字以上）" %></td>
+        <td><%= f.password_field :password, autocomplete: "current-password" %></td>
+       </tr>
+
+       <tr>
+        <td></td>
+        <td class="text-center">
+          <div class="mx-auto p-2">
+            <%= f.submit "ログイン", class: 'btn btn-primary' %>
+          </div>
+        </td>
+       </tr>
+      <% end %>
+      </table>
+
+      <div class="mx-auto w-50 bg-light text-center" >
+        <p>会員登録が済みでない方</br>
+      </div>
+      <div class="mx-auto text-center">
+        <%= link_to 'こちら',new_user_registration_path %>から新規登録を行なってください。
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "public/shared/links" %>
+</div>

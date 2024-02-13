@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
+      <div class="mx-auto w-50 bg-light text-center">
+        <p>マイページ</p>
+      </div>
+
+      <table class="mx-auto">
+        <tbody>
+
+          <tr>
+            <td>登録情報</td>
+            <td>
+              <%= link_to '編集する', edit_user_path(@user), class: "btn btn-sm btn-success" %>
+            </td>
+          </tr>
+
+          <tr>
+            <td>ユーザーネーム</td>
+            <td><%= "#{ current_user.user_name }" %></td>
+          </tr>
+
+          <tr>
+            <td>ユーザーネームフリガナ</td>
+            <td><%= "#{ current_user.user_name_kana }" %></td>
+          </tr>
+
+          <tr>
+            <td>職業</td>
+            <td><%= "#{ current_user.occupation }" %></td>
+          </tr>
+
+        </tbody>
+      </table>
+
+      <% unless @user.guest_user? %>
+      <div class="row">
+        <%= link_to "", edit_user_path(@user), class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{user.id}" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
