@@ -3,10 +3,10 @@ ja:
     attributes:
       user:
         user_name: ユーザーネーム
-        user_name_kana: ユーザーネームのかな文字
+        user_name_kana: ユーザーネームフリガナ
         introduction: 紹介文
         birth_date: 生年月日
-        occupation: 職業欄
+        occupation: 職業
         email: メールアドレス
         password: パスワード
     errors:
