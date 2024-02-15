@@ -6,6 +6,14 @@ class Public::SearchesController < ApplicationController
     @content = params[:content]
     @method = params[:method]
 
-  end
+    # 選択したモデルに応じて検索を実行
+    if @model  == "user"
+      @records = User.search_for(@content, @method)
+    else
+      @records = Posts.search_for(@content, @method)
+    end
 
+    
+    
+  end
 end

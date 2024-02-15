@@ -1,9 +1,12 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :ensure_correct_user, only: [:edit,:update]
   before_action :ensure_guest_user, only: [:edit]
 
   def index
+    @user = current_user
     @users = User.all
+    @post = Post.new
   end
 
   def new
@@ -18,6 +21,9 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @post = Post.new
+    @posts = @user.posts
+    @comment = Comment.new
   end
 
   def edit
@@ -28,14 +34,14 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:notice] = "情報を更新しました！"
-      redirect_to users_edit_path
+      redirect_to user_path(@user.id)
     else
       render :edit
     end
   end
 
   def unsubscribe
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   def withdraw
@@ -48,13 +54,20 @@ class Public::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:user_name, :user_name_kana, :introduction, :birth_date, :occupation, :email)
+    params.require(:user).permit(:user_name, :user_name_kana, :introduction, :birth_date, :occupation, :email, :profile_image)
+  end
+
+  def ensure_correct_user
+    @user = User.find(params[:id])
+    unless @user == current_user
+      redirect_to user_path(current_user)
+    end
   end
 
   def ensure_guest_user
     @user = User.find(params[:id])
     if @user.guest_user?
-      redirect_to user_path(current_user) , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
+      redirect_to user_path(current_user), notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
     end
   end
 end

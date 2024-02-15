@@ -50,9 +50,6 @@ group :test do
   gem 'selenium-webdriver', '>= 4.0.0.rc1'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
-  # 追加
-  # デバッグbinding.pry Doc: https://github.com/deivid-rodriguez/pry-byebug
-  gem 'pry-byebug'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -62,4 +59,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 
 gem "enum_help"
+
+gem 'kaminari','~> 1.2.1'
 
