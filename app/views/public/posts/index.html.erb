@@ -2,14 +2,15 @@
   <%= render 'layouts/errors',obj: @post %>
   <div class='row'>
     <div class='col-md-3'>
-      <h2>User info</h2>
-      <%= render 'users/info', user: current_user %>
-      <h2 class="mt-3">New book</h2>
-      <%= render 'form', book: @book %>
+      <p>こちらから、お好きな色へ飛んで下さい</p>
+        <div>
+          赤、橙、黄、緑、青、藍、紫
+        </div>
     </div>
+
     <div class='col-md-8 offset-md-1'>
-      <h2>Books</h2>
-      <%= render 'index', books: @books%>
+      <h2>投稿一覧</h2>
+      <%= render 'public/posts/index', posts: @posts%>
     </div>
   </div>
 </div>

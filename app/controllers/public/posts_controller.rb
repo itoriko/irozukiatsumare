@@ -17,7 +17,7 @@ class PostsController < ApplicationController
   def index
     @user = current_user
     @post = Post.new
-    @posts = Post.all
+    @posts = Post.page(params[:page])
     if params[:word]
       @posts = @posts.where('name like ? ', '%'+params[:word]+'%')
     end

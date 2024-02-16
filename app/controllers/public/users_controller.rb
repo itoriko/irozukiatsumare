@@ -5,7 +5,7 @@ class Public::UsersController < ApplicationController
 
   def index
     @user = current_user
-    @users = User.all
+    @users = User.page(params[:page])
     @post = Post.new
   end
 
@@ -22,7 +22,7 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @post = Post.new
-    @posts = @user.posts
+    @posts = @user.posts.page(params[:page])
     @comment = Comment.new
   end
 

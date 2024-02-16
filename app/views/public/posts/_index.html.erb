@@ -2,25 +2,25 @@
   <thead>
     <tr>
       <th></th>
-      <th>Title</th>
-      <th>Opinion</th>
+      <th>タイトル</th>
+      <th>投稿内容</th>
       <th colspan="3"></th>
     </tr>
   </thead>
   <tbody>
-    <% books.each do |book| %>
+    <% posts.each do |post| %>
       <tr>
-        <td><%= link_to(book.user) do %>
-          <%= image_tag book.user.get_profile_image, size:'50x50' %>
+        <td><%= link_to (post.user) do %>
+          <%= image_tag post.user.get_profile_image, size:'50x50' %>
           <% end %>
         </td>
-        <td><%= link_to book.title,book, class: "book_#{book.id}" %></td>
-        <td><%= book.body %></td>
-        <td id="favorite_btn_<%= book.id %>">
-          <%= render "favorites/btn", book: book %>
+        <td><%= link_to post.title, post, class: "post_#{post.id}" %></td>
+        <td><%= post.content %></td>
+        <td id="favorite_btn_<%= post.id %>">
+          <%= render "favorites/btn", post: post %>
         </td>
         <td>
-          <%= render "book_comments/counter", book: book %>
+          <%= render "public/comments/counter", post: post %>
         </td>
       </tr>
     <% end %>
