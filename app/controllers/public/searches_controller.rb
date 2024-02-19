@@ -1,5 +1,5 @@
 class Public::SearchesController < ApplicationController
-    before_action :authenticate_user!
+  before_action :authenticate_user!
 
   def search
     @model = params[:model]
@@ -8,12 +8,10 @@ class Public::SearchesController < ApplicationController
 
     # 選択したモデルに応じて検索を実行
     if @model  == "user"
-      @records = User.search_for(@content, @method)
+      @users = User.search_for(@content, @method)
     else
-      @records = Posts.search_for(@content, @method)
+      @posts = Post.search_for(@content, @method)
     end
 
-    
-    
   end
 end

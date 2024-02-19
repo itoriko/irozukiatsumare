@@ -1,2 +1,63 @@
-<h1>Admin::Users#edit</h1>
-<p>Find me in app/views/admin/users/edit.html.erb</p>
+<div class="container">
+  <div class="mx-auto w-50 bg-light text-center">
+    <p><%= @user.user_name %>さんの情報編集</p>
+  </div>
+
+  <%= form_with model: @user, url: admin_user_path, method: :patch do |f| %>
+  <table class="d-flex justify-content-center">
+    <tbody>
+      <tr>
+        <td>ユーザーID</td>
+        <td><%= @user.id %></td>
+      </tr>
+
+      <tr>
+        <td><%= f.label :image, "画像を設定" %></td>
+        <td><%= f.file_field :profile_image, accept: "image/*"%></td>
+      </tr>
+
+      <tr>
+        <td><%= f.label :user_name, "ユーザーネーム" %></td>
+        <td><%= f.text_field :user_name %></td>
+      </tr>
+
+      <tr>
+        <td><%= f.label :user_name_kana, "ユーザーネームフリガナ" %></td>
+        <td><%= f.text_field :user_name_kana %></td>
+      </tr>
+
+      <tr>
+        <td><%= f.label :occupation, "職業" %></td>
+        <td><%= f.text_field :occupation %></td>
+      </tr>
+
+      <tr>
+        <td><%= f.label :introduction, "自己紹介" %></td>
+        <td><%= f.text_area :introduction %></td>
+      </tr>
+
+      <tr>
+        <td><%= f.label :email, "メールアドレス" %></td>
+        <td><%= f.email_field :email %></td>
+      </tr>
+
+      <tr>
+        <td><%= f.label :is_active, "会員ステータス" %></td>
+        <td>
+          <div class="col-3">
+            <%= f.radio_button :is_active, true, id:'inputStatusTrue' %>
+            <label for="inputStatusTrue" class="col-form-label">有効</label>
+            <%= f.radio_button :is_active, false, id:'inputStatueFalse' %>
+            <label for="inputStatusFalse" class="col-form-label">退会</label>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td> <%= f.submit'編集内容を保存', class: "btn btn-success" %>
+        <td> <%= link_to "ユーザを削除", admin_user_path(@user.id), class: "btn btn-sm btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+      </tr>
+    </tbody>
+  </table>
+  <% end %>
+</div>

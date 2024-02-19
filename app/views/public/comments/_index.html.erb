@@ -1,0 +1,20 @@
+<table>
+  <tbody>
+    <% post.comments.each do |comment| %>
+      <tr>
+        <td>
+          <%= link_to user_path(comment.user) do %>
+            <%= image_tag comment.user.get_profile_image, size: "50x50" %><br>
+            <%= comment.user.user_name %>
+          <% end %>
+        </td>
+        <td><%= comment.comment %></td>
+        <td>
+          <% if comment.user == current_user %>
+            <%= link_to "削除", post_comment_path(post, comment), method: :delete, data: { confirm: 'コメントを削除しますか？' }, class: "btn btn-danger pull-right", remote: true %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,6 +1,8 @@
 class Admin::UsersController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
-    @user = User.all
+    @users = User.all.page(params[:page]).per(10)
   end
 
   def show
@@ -14,12 +16,18 @@ class Admin::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
-    redirect_to admin_user_path
+    redirect_to admin_users_path, notice: "情報を更新しました。"
+  end
+
+  def destroy
+    user = User.find(params[:id])
+    user.destroy
+    redirect_to admin_users_path, notice: "不適切なユーザーを削除しました。"
   end
 
   private
 
-  def customer_params
-    params.require(:user).permit(:user_name, :email, :encrypted_password, :is_active)
+  def user_params
+    params.require(:user).permit(:image, :user_name, :user_name_kana, :occupation, :introduction, :email, :is_active)
   end
 end

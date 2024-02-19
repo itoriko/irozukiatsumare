@@ -36,7 +36,7 @@ class Public::SessionsController < Devise::SessionsController
     return unless @user.valid_password?(params[:user][:password])
 
     if !@user.is_active?
-      redirect_to new_user_session
+      redirect_to new_user_session_path
       return
     else
       return { success: true, message: "ログインに成功しました！" }

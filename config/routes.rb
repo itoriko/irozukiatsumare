@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get '/search', to: 'searches#search'
 
   # ユーザ用
   # URL /users/sign_in ...
@@ -21,13 +20,15 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: "homes#top"
-    resources :posts, only: [:index, :new, :create, :show, :edit, :update]
-    resources :colors, only: [:index, :create, :edit, :update, :destroy]
-    resources :users, only: [:index, :show, :edit, :update]
+    resources :posts
+    resources :colors# [:index, :create, :edit, :update, :destroy]
+    resources :users, only: [:index, :show, :edit, :update, :destroy]
   end
 
   scope module: :public do
     root to: "homes#top"
+    get '/search', to: 'searches#search'
+
     resources :users do
       resource :relationships, only: [:create, :destroy]
     	  get "followings" => "relationships#followings", as: "followings"
@@ -37,7 +38,10 @@ Rails.application.routes.draw do
         patch 'users/withdraw', to: 'users#withdraw', as: 'withdraw'
       end
     end
-    resources :posts do
+    resources :colors, only: [:index, :create, :edit, :show, :update, :destroy] do
+      resources :posts, only: [:create, :new]
+    end
+    resources :posts, only: [:index, :edit, :show, :update, :destroy] do
       resource :favorite, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
     end

@@ -1,9 +1,9 @@
-class PostsController < ApplicationController
+class Public::PostsController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def new
     @post = Post.new
+    @color = Color.find(params[:color_id])
   end
 
   def show
@@ -17,15 +17,14 @@ class PostsController < ApplicationController
   def index
     @user = current_user
     @post = Post.new
-    @posts = Post.page(params[:page])
-    if params[:word]
-      @posts = @posts.where('name like ? ', '%'+params[:word]+'%')
-    end
+    @posts = Post.where(color_id: params[:color_id]).page(params[:page]).per(10)
   end
 
   def create
     @post = Post.new(post_params)
+    @color = Color.find(params[:color_id])
     @post.user_id = current_user.id
+    @post.color_id = @color.id
     if @post.save
       flash[:notice] = "投稿しました！"
       redirect_to post_path(@post.id)

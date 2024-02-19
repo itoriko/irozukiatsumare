@@ -9,8 +9,8 @@
         <tbody>
 
           <tr>
+            <td>プロフィール画像</td>
             <td><%= image_tag @user.get_profile_image, size: '100x100' %></td>
-            <td></td>
           </tr>
 
           <tr>
@@ -37,7 +37,7 @@
             <td></td>
             <td>
               <% if (not @user.guest_user?) && current_user.id == @user.id %>
-                <%= link_to "編集する", edit_user_path(@user), class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{@user.id}" %>
+                <%= link_to "編集する", edit_user_path(@user), class: "btn btn-primary btn-block edit_user_#{@user.id}" %>
               <% end %>
             </td>
           </tr>

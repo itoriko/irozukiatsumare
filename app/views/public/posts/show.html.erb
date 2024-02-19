@@ -1,40 +1,48 @@
 <div class='container'>
   <div class='row'>
     <div class='col-md-3'>
-      <h2>User info</h2>
-      <%= render 'users/info', user: @book.user %>
-      <h2 class="mt-3">New book</h2>
-      <%= render 'form', book: Book.new %>
+      <p>こちらから、<br>
+      お好きな色へ飛んで下さい
+      </p>
+        <ul>
+          <% Color.all.each do |color| %>
+            <li><%= link_to color.name, color_path(color.id) %></li>
+          <li style="text-align: center;">
+          <%= link_to new_color_post_path(color) do %>
+          <i class="fa-solid fa-circle-plus fa-3x"></i>
+          <% end %>
+        </li>
+          <% end %>
+        </ul>
     </div>
-
     <div class='col-md-8 offset-md-1'>
-  		<h2>Book detail</h2>
+  		<h2>投稿詳細</h2>
   		<table class='table'>
   		  <tr>
-          <td><%= link_to(@book.user) do %>
-            <%= image_tag @book.user.get_profile_image, size:"100x100" %><br>
-            <%= @book.user.name %>
+          <td><%= link_to(@post.user) do %>
+            <%= image_tag @post.user.get_profile_image, size:"100x100" %><br>
+            <%= @post.user.user_name %>
             <% end %>
           </td>
-          <td><%= link_to @book.title, @book %></td>
-          <td><%= @book.body %></td>
-          <td id="favorite_btn_<%= @book.id %>">
-            <%= render "favorites/btn", book: @book %>
+          <td><%= link_to @post.title, @post %></td>
+          <td><%= @post.content %></td>
+          <td id="favorite_btn_<%= @post.id %>">
+            <%= render "public/favorites/btn", post: @post %>
           </td>
           <td id="comment_counter">
-            <%= render "book_comments/counter", book: @book %>
+            <%= render "public/comments/counter", post: @post %>
           </td>
-          <% if @book.user == current_user %>
-            <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success edit_book_#{@book.id}" %></td>
-            <td><%= link_to 'Destroy', @book, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{@book.id}"%></td>
+          <% if @post.user == current_user %>
+            <td><%= link_to '編集', edit_post_path(@post), class: "btn btn-sm btn-success edit_book_#{@post.id}" %></td>
+            <td><%= link_to '削除', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_#{@postid}"%></td>
           <% end %>
         </tr>
       </table>
 
       <div id="comment_index">
-      <%= render "book_comments/index", book: @book %>
+      <%= render "public/comments/index", post: @post %>
       </div>
-      <%= render "book_comments/form", book: @book, book_comment: @book_comment %>
+      <%= render "public/comments/form", post: @post, comment: @comment %>
 
     </div>
   </div>

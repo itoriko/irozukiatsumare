@@ -9,6 +9,12 @@ ja:
         occupation: 職業
         email: メールアドレス
         password: パスワード
+      post:
+        title: タイトル
+        content: 投稿内容
+        color: 色
+      color:
+        name: 色彩名
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

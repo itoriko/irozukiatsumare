@@ -9,11 +9,11 @@
   </p>
 </div>
 
-<div class="row">
-  <div class="mx-auto col-lg-md">
+<div class="d-flex justify-content-center">
+  <div class="action">
     <%=link_to "退会しない", edit_user_path(current_user), class: 'btn btn-sm btn-primary' %>
   </div>
-  <div class="mx-auto col-md">
+  <div class="action">
     <%=link_to "退会する", withdraw_users_path, method: :patch, class: "btn btn-sm btn-danger" %>
   </div>
 </div>
