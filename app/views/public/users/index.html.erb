@@ -4,21 +4,21 @@
       <p>こちらから、<br>
       お好きな色へ飛んで下さい
       </p>
-        <ul>
-          <% Color.all.each do |color| %>
-            <li><%= link_to color.name, color_path(color.id) %></li>
+      <ul>
+        <% Color.all.each do |color| %>
+          <li><%= link_to color.name, color_path(color.id) %></li>
           <li style="text-align: center;">
-          <%= link_to new_color_post_path(color) do %>
-          <i class="fa-solid fa-circle-plus fa-3x"></i>
-          <% end %>
-        </li>
-          <% end %>
-        </ul>
+            <%= link_to new_color_post_path(color) do %>
+              <i class="fa-solid fa-circle-plus fa-3x"></i>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
     </div>
 
     <div class='col-md-8 offset-md-1'>
       <h2>ユーザー一覧</h2>
-      <%= render 'public/users/index',users: @users %>
+      <%= render 'public/users/index', users: @users %>
     </div>
   </div>
 </div>

@@ -1,21 +1,8 @@
 class Admin::PostsController < ApplicationController
   before_action :authenticate_admin!
 
-  def new
-    @post = Post.new
-  end
-
-  def create
-    @post = Post.new(post_params)
-    if @post.save
-      redirect_to admin_posts_path(@post.id)
-    else
-      render :new
-    end
-  end
-
   def index
-    @post = Post.page(params[:page]).per(10)
+    @post = Post.all.page(params[:page]).per(10)
   end
 
   def show
@@ -28,8 +15,8 @@ class Admin::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    if @item.update(post_params)
-      redirect_to admin_posts_path(@post)
+    if @post.update(post_params)
+      redirect_to admin_posts_path(@post), notice: "投稿内容を変更しました。"
     else
       render :edit
     end
@@ -38,7 +25,7 @@ class Admin::PostsController < ApplicationController
   def destroy
     post = Post.find(params[:id])
     post.destroy
-    redirect_to admin_posts_path, notice: "不適切な投稿を削除しました"
+    redirect_to admin_posts_path, notice: "不適切な投稿を削除しました。"
   end
 
   private

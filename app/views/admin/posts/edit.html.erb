@@ -1,46 +1,36 @@
 <div class="container">
-  <div class="row">
-    <div class="col-sm-3 px-sm-0 offset-sm-1"style="background-color: #dcdcdc;">
-      <h2>商品編集</h2>
-    </div>
-
-    <div class="col-md-6 offset-md-3">
-      <%= form_with model: @item, url: admin_item_path(@item), method: :patch do |f| %>
-      <table class="table">
-        <tr>
-          <th style="border:none;">商品画像</th>
-          <td style="border:none;"><%= f.file_field :image, accept: "image/*" %></td>
-        </tr>
-        <tr>
-          <th style="border:none;">商品名</th>
-          <td style="border:none;"><%= f.text_field :name, size: "30x20" %></td>
-        </tr>
-        <tr>
-          <th style="border:none;">商品説明</th>
-          <td style="border:none;"><%= f.text_area :item_description, size: "30x5" %></td>
-        </tr>
-        <tr>
-          <th style="border:none;">ジャンル</th>
-          <td style="border:none;"><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), size: "30x20" %></td>
-        </tr>
-        <tr>
-          <th style="border:none;">税抜価格</th>
-          <td style="border:none;"><%= f.text_field :price, size: "30x20" %> 円</td>
-        </tr>
-        <tr>
-          <th style="border:none;">販売ステータス</th>
-          <td style="border:none;">
-            <%= f.radio_button :is_active, true %>
-            <%= f.label :is_active, "販売中" %>
-            <%= f.radio_button :is_active, false %>
-            <%= f.label :is_active, "販売停止中" %>
-          </td>
-        </tr>
-      </table>
-      <div class="col d-flex justify-content-center">
-         <%= f.submit "変更を保存", class: "btn btn-success btn-lg mx-auto" %>
-      </div>
-      <% end %>
-    </div>
+  <div class="mx-auto w-50 bg-light text-center">
+    <p>投稿情報編集</p>
   </div>
+
+  <%= form_with model: @post, url: admin_post_path, method: :patch do |f| %>
+  <table class="d-flex justify-content-center">
+    <tbody>
+      <tr>
+        <td>投稿ID</td>
+        <td><%= @post.id %></td>
+      </tr>
+
+      <tr>
+        <td>色彩グループ</td>
+        <td><%= @post.color.name %></td>
+      </tr>
+
+      <tr>
+        <td><%= f.label :title, "タイトル" %></td>
+        <td><%= f.text_field :title %></td>
+      </tr>
+
+      <tr>
+        <td><%= f.label :content, "投稿内容" %></td>
+        <td><%= f.text_field :content %></td>
+      </tr>
+
+      <tr>
+        <td> <%= f.submit'編集内容を保存', class: "btn btn-success" %>
+        <td> <%= link_to "編集内容を削除", admin_post_path(@post.id), class: "btn btn-md btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+      </tr>
+    </tbody>
+  </table>
+  <% end %>
 </div>
