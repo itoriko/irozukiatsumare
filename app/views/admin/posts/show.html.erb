@@ -1,0 +1,40 @@
+<div class="container">
+  <p class="mx-auto w-50 text-center bg-light">
+    投稿詳細情報
+  </p>
+
+  <table class="mx-auto">
+    <tbody>
+      <tr>
+        <td>投稿ID</td>
+        <td><%= @post.id %></td>
+      </tr>
+
+      <tr>
+        <td>色彩ID</td>
+        <td><%= @post.color_id %></td>
+      </tr>
+
+      <tr>
+        <td>タイトル</td>
+        <td><%= @post.title %></td>
+      </tr>
+
+      <tr>
+        <td>投稿内容</td>
+        <td><%= @post.content %></td>
+      </tr>
+
+      <tr>
+        <td>
+          <%= link_to "編集する", edit_admin_post_path, class:'btn btn-success px-3' %>
+        </td>
+        <td>
+          <%=link_to "投稿一覧に戻る", admin_posts_path, class:'btn btn-primary px-3' %>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+
+</div>

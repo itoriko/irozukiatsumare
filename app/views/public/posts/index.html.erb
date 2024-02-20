@@ -1,0 +1,24 @@
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-3'>
+      <p>こちらから、<br>
+      お好きな色へ飛んで下さい
+      </p>
+      <ul>
+        <% Color.all.each do |color| %>
+          <li><%= link_to color.name, color_path(color.id) %></li>
+          <li style="text-align: center;">
+            <%= link_to new_color_post_path(color) do %>
+              <i class="fa-solid fa-circle-plus fa-3x"></i>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class='col-md-8 offset-md-1'>
+      <h2>投稿一覧</h2>
+      <%= render 'public/posts/index', posts: @posts %>
+    </div>
+  </div>
+</div>

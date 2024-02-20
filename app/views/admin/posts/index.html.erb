@@ -1,0 +1,31 @@
+<div class="container">
+  <div class= "mx-auto w-50 bg-light text-center" >
+    <p>投稿一覧</p>
+  </div>
+
+  <table class= "w-100">
+    <thead>
+      <tr>
+        <th>投稿ID</th>
+        <th>色彩グループ</th>
+        <th>タイトル</th>
+        <th>投稿内容</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% Post.all.each do |posts| %>
+      <tr>
+        <td><%= posts.id %></td>
+        <td>
+          <%= link_to admin_post_path(posts.id) do %>
+          <%= posts.color.name %>
+          <% end %>
+        </td>
+        <td><%= posts.title %></td>
+        <td><%= posts.content %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>
