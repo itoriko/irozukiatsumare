@@ -1,16 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Irozukiatsumare</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Irozukiastumare</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/0e739b83f5.js" crossorigin="anonymous"></script>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <%= yield %>
+    <%= render 'layouts/header' %>
+      <main>
+        <div class="d-flex justify-content-center mb-2">
+          <%= render "public/searches/form" %>
+        </div>
+        <p id="notice"><%= flash[:notice] %></p>
+      </main>
+      <%= yield %>
+    <%= render 'layouts/footer' %>
   </body>
 </html>

@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="mx-auto w-50 bg-light text-center">
+    <p>管理者ログイン</p>
+  </div>
+
+  <div class="d-flex justify-content-center">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+    <div class= "field" >
+      <%= f.label :email, "メールアドレス" %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+
+    <div class= "field" >
+      <%= f.label :password, "パスワード（6文字以上）" %><br />
+      <%= f.password_field :password, autocomplete: "current-password" %>
+    </div>
+
+    <div class="p-2 actions">
+      <%= f.submit "ログイン", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+  </div>
+  <%= render "admin/shared/links" %>
+</div>

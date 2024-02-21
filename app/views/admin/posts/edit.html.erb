@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="mx-auto w-50 bg-light text-center">
+    <p>投稿情報編集</p>
+  </div>
+
+  <%= form_with model: @post, url: admin_post_path, method: :patch do |f| %>
+  <table class="d-flex justify-content-center">
+    <tbody>
+      <tr>
+        <td>投稿ID</td>
+        <td><%= @post.id %></td>
+      </tr>
+
+      <tr>
+        <td>色彩グループ</td>
+        <td><%= @post.color.name %></td>
+      </tr>
+
+      <tr>
+        <td><%= f.label :title, "タイトル" %></td>
+        <td><%= f.text_field :title %></td>
+      </tr>
+
+      <tr>
+        <td><%= f.label :content, "投稿内容" %></td>
+        <td><%= f.text_field :content %></td>
+      </tr>
+
+      <tr>
+        <td> <%= f.submit'編集内容を保存', class: "btn btn-success" %>
+        <td> <%= link_to "編集内容を削除", admin_post_path(@post.id), class: "btn btn-md btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+      </tr>
+    </tbody>
+  </table>
+  <% end %>
+</div>
