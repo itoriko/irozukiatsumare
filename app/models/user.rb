@@ -74,11 +74,11 @@ class User < ApplicationRecord
     if method == 'perfect'
       User.where(user_name: content)
     elsif method == 'forward'
-      User.where('name LIKE ?', content + '%')
+      User.where('user_name LIKE ?', content + '%')
     elsif method == 'backward'
-      User.where('name LIKE ?', '%' + content)
+      User.where('user_name LIKE ?', '%' + content)
     else
-      User.where('name LIKE ?', '%' + content + '%')
+      User.where('user_name LIKE ?', '%' + content + '%')
     end
   end
 end
