@@ -25,7 +25,6 @@ class User < ApplicationRecord
   validates :user_name, length: { in: 2..20, allow_blank: true }, presence: true, uniqueness: true
   validates :user_name_kana, presence: true
   validates :introduction, length: { maximum: 50 }
-  # validates :birth_date
   validates :occupation, presence: true
   validates :email, presence: true,uniqueness: true
   validates :password, presence: true,
