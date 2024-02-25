@@ -60,15 +60,15 @@ ActiveRecord::Schema.define(version: 2024_02_15_123819) do
 
   create_table "comments", force: :cascade do |t|
     t.text "comment"
-    t.integer "user_id"
-    t.integer "post_id"
+    t.integer "user_id", null: false
+    t.integer "post_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "post_id"
+    t.integer "user_id", null: false
+    t.integer "post_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -76,15 +76,15 @@ ActiveRecord::Schema.define(version: 2024_02_15_123819) do
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "content"
-    t.integer "user_id"
-    t.integer "color_id"
+    t.integer "user_id", null: false
+    t.integer "color_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "relationships", force: :cascade do |t|
-    t.integer "follower_id"
-    t.integer "followed_id"
+    t.integer "follower_id", null: false
+    t.integer "followed_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

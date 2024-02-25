@@ -6,7 +6,6 @@
       </div>
 
       <%= form_with model: @user, url: user_path(@user), method: :patch, local: true do |f| %>
-      <%= render 'layouts/errors', obj: @user %>
       <table class="mx-auto">
         <tbody>
           <tr>
