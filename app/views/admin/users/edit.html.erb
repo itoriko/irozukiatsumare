@@ -55,7 +55,7 @@
 
       <tr>
         <td> <%= f.submit'編集内容を保存', class: "btn btn-success" %>
-        <td> <%= link_to "ユーザを削除", admin_user_path(@user.id), class: "btn btn-sm btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+        <td> <%= link_to "ユーザを削除", admin_user_path(@user.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
       </tr>
     </tbody>
   </table>

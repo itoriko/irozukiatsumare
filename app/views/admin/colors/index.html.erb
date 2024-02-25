@@ -5,13 +5,24 @@
 
   <div class="row my-3 justify-content-center">
     <div class="col-lg-6">
-      <%= form_with model: @color, url: admin_colors_path do |f| %>
-        <%= f.label :color_image, "背景画像を設定" %>
-        <%= f.file_field :color_image, accept: "image/*"%>
-        <%= f.label :name, "色彩名", class:'mr-5' %>
-        <%= f.text_field :name, placeholder: '色彩名' %>
-        <%= f.submit "新規登録", class: 'btn btn-success ml-5' %>
-      <% end %>
+      <table class="table table-borderless">
+        <tbody>
+          <%= form_with model: @color, url: admin_colors_path do |f| %>
+          <tr>
+            <td><%= f.label :color_image, "背景画像を設定" %></td>
+            <td><%= f.file_field :color_image, accept: "image/*"%></td>
+          </tr>
+          <tr>
+            <td><%= f.label :name, "色彩名", class:'mr-5' %></td>
+            <td><%= f.text_field :name, placeholder: '色彩名' %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><%= f.submit "新規登録", class: 'btn btn-success ml-5' %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 
@@ -20,7 +31,7 @@
       <table class="table">
         <thead class="bg-light">
           <tr>
-            <th>色彩名</th>
+            <th class="text-center">色彩名</th>
             <th></th>
           </tr>
         </thead>
@@ -35,7 +46,7 @@
                 </p>
               </div>
             </td>
-            <td>
+            <td class="d-flex justify-content-center">
               <%= link_to '編集する', edit_admin_color_path(color), class: 'btn btn-success' %>
             </td>
           </tr>
