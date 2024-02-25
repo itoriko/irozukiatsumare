@@ -1,6 +1,6 @@
 <div class="container">
   <div class="mx-auto w-50 bg-light text-center">
-    <p><%= @user.user_name %>さんの情報編集</p>
+    <h3><%= @user.user_name %>さんの情報編集</h3>
   </div>
 
   <%= form_with model: @user, url: admin_user_path, method: :patch do |f| %>
@@ -53,11 +53,17 @@
         </td>
       </tr>
 
-      <tr>
-        <td> <%= f.submit'編集内容を保存', class: "btn btn-success" %>
-        <td> <%= link_to "ユーザを削除", admin_user_path(@user.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
-      </tr>
     </tbody>
   </table>
+
+  <div class="d-flex justify-content-center" >
+    <div class="p-2">
+      <%= f.submit'編集内容を保存', class: "btn btn-success" %>
+    </div>
+    <div class="p-2">
+      <%= link_to "ユーザを削除", admin_user_path(@user.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %>
+    </div>
+  </div>
+
   <% end %>
 </div>

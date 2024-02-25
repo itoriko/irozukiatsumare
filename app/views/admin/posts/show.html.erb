@@ -1,7 +1,7 @@
 <div class="container">
-  <p class="mx-auto w-50 text-center bg-light">
+  <h3 class="mx-auto w-50 text-center bg-light">
     投稿詳細情報
-  </p>
+  </h3>
 
   <table class="mx-auto">
     <tbody>
@@ -26,10 +26,10 @@
       </tr>
 
       <tr>
-        <td>
+        <td class="p-2" >
           <%= link_to "編集する", edit_admin_post_path, class:'btn btn-success px-3' %>
         </td>
-        <td>
+        <td class="p-2" >
           <%=link_to "投稿一覧に戻る", admin_posts_path, class:'btn btn-primary px-3' %>
         </td>
       </tr>

@@ -1,17 +1,29 @@
-<p>こちらから、<br>
-お好きな色へ飛んで下さい
-</p>
-<div class="row">
-  <% Color.all.each do |color| %>
-    <div class="col-6">
-      <%= link_to color_path(color.id) do %>
-        <p><%= color.name %></p>
-      <% end %>
-    </div>
-    <div class="col-6">
-      <%= link_to new_color_post_path(color) do %>
-        <i class="fa-solid fa-circle-plus fa-3x"></i>
-      <% end %>
-    </div>
-  <% end %>
+<div  class="text-center">
+  <p>こちらから、<br>
+  お好きな色へ飛んで下さい
+  </p>
 </div>
+
+<table class="table table-borderless">
+  <tbody>
+    <% Color.all.each do |color| %>
+      <tr>
+        <td width="50%">
+          <div class="color_box">
+            <%= link_to color_path(color.id) do %>
+              <%= image_tag color.get_color_image, class: 'box_image' %>
+              <p>
+                <%= color.name %>
+              </p>
+            <% end %>
+          </div>
+        </td>
+        <td class="d-flex justify-content-center">
+          <%= link_to new_color_post_path(color) do %>
+            <i class="fa-solid fa-circle-plus fa-3x"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

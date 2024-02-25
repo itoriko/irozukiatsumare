@@ -1,47 +1,47 @@
 <div class="container">
-  <p class="mx-auto w-50 text-center bg-light">
+  <h3 class="mx-auto w-50 text-center bg-light">
     <%= @user.user_name %>さんの詳細情報
-  </p>
+  </h3>
 
   <table class="mx-auto">
     <tbody>
       <tr>
-        <td>ユーザーID</td>
+        <td class="p-2" >ユーザーID</td>
         <td><%= @user.id %></td>
       </tr>
 
       <tr>
-        <td>プロフィール画像</td>
+        <td class="p-2" >プロフィール画像</td>
         <td><%= image_tag @user.get_profile_image, size: '100x100' %></td>
       </tr>
 
       <tr>
-        <td>ユーザーネーム</td>
+        <td class="p-2" >ユーザーネーム</td>
         <td><%= @user.user_name %></td>
       </tr>
 
       <tr>
-        <td>ユーザーネームフリガナ</td>
+        <td class="p-2" >ユーザーネームフリガナ</td>
         <td><%= @user.user_name_kana %></td>
       </tr>
 
       <tr>
-        <td>職業</td>
+        <td class="p-2" >職業</td>
         <td><%= @user.occupation %></td>
       </tr>
 
       <tr>
-        <td>自己紹介</td>
+        <td class="p-2" >自己紹介</td>
         <td><%= @user.introduction %></td>
       </tr>
 
       <tr>
-        <td>メールアドレス</td>
+        <td class="p-2" >メールアドレス</td>
         <td><%= @user.email %></td>
       </tr>
 
       <tr>
-        <td>ユーザーステータス</td>
+        <td class="p-2" >ユーザーステータス</td>
         <td>
           <% if @user.is_active %>
             <p class="text-success"><strong>有効</strong></p>
@@ -52,7 +52,7 @@
       </tr>
 
       <tr>
-        <td>
+        <td class="p-2" >
           <% if @user.guest_user? %>
             <div class= "btn btn-secondary px-3" >
             編集する
@@ -61,7 +61,7 @@
             <%= link_to "編集する", edit_admin_user_path, class:'btn btn-success px-3' %>
           <% end %>
         </td>
-        <td><%=link_to "ユーザー一覧に戻る", admin_users_path, class:'btn btn-primary px-3' %></td>
+        <td class="p-2" ><%=link_to "ユーザー一覧に戻る", admin_users_path, class:'btn btn-primary px-3' %></td>
       </tr>
 
     </tbody>
