@@ -37,6 +37,6 @@ class Admin::ColorsController < ApplicationController
 
   private
   def color_params
-    params.require(:color).permit(:name)
+    params.require(:color).permit(:name, :color_image)
   end
 end

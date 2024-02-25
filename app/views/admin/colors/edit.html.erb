@@ -1,26 +1,28 @@
 <div class= "container" >
   <div class= "mx-auto w-50 bg-light text-center" >
-  <p>色彩実装編集</p>
+    <p>色彩実装編集</p>
   </div>
 
-  <div class="row mb-5 justify-content-center">
-    <div class="col-lg-10 my-5">
-      <%= form_with model: @color, url: admin_color_path(@color.id), method: :patch, local: true do |f| %>
-        <div class="field row">
-          <label for="inputName", class="col-lg-2 col-form-label">
-            <strong>色彩名</strong>
-          </label>
-          <div class="col-lg-3">
-            <%= f.text_field :name, id:'inputName', placeholder: '色彩名' %>
-          </div>
-          <div class="col-lg-3">
-            <%= f.submit "変更を保存", class: "btn btn-success ml-5 px-4" %>
-          </div>
-          <div class="col-lg-3">
-            <%= link_to "色彩を削除", admin_color_path(@color.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %>
-          </div>
-        </div>
-      <% end %>
-    </div>
+  <%= form_with model: @color, url: admin_color_path(@color.id), method: :patch, local: true do |f| %>
+  <table class="d-flex justify-content-center">
+    <tbody>
+      <tr>
+        <td><%= f.label :name, "色彩名" %></td>
+        <td><%= f.text_field :name, id:'inputName', placeholder: '色彩名' %></td>
+      </tr>
+
+      <tr>
+        <td><%= f.label :color_image, "色彩画像" %></td>
+        <td><%= f.file_field :color_image, accept: "image/*"%></td>
+      </tr>
+
+      <tr>
+        <td> <%= f.submit'編集内容を保存', class: "btn btn-success" %>
+        <td> <%= link_to "編集内容を削除", admin_color_path(@color.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+      </tr>
+    </tbody>
+  </table>
+  <% end %>
+
   </div>
 </div>

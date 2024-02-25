@@ -6,7 +6,7 @@
   <div class="row my-3 justify-content-center">
     <div class="col-lg-6">
       <%= form_with model: @color, url: admin_colors_path do |f| %>
-        <%= f.label :image, "背景画像を設定" %>
+        <%= f.label :color_image, "背景画像を設定" %>
         <%= f.file_field :color_image, accept: "image/*"%>
         <%= f.label :name, "色彩名", class:'mr-5' %>
         <%= f.text_field :name, placeholder: '色彩名' %>
@@ -27,13 +27,13 @@
         <tbody>
           <% @colors.each do |color| %>
           <tr>
-            <td>
+            <td width="50%">
               <div class="color_box">
-                <%= image_tag @color.get_color_image, size: '100x100' %>
+                <%= image_tag color.get_color_image, class: 'box_image' %>
+                <p>
+                  <%= color.name %>
+                </p>
               </div>
-              <p>
-                <%= color.name %>
-              </p>
             </td>
             <td>
               <%= link_to '編集する', edit_admin_color_path(color), class: 'btn btn-success' %>
