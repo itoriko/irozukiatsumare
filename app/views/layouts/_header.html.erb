@@ -1,12 +1,18 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-light">
-    <div class="container">
+    <div class="container top-nav">
       <% if user_signed_in? %>
-        <%= link_to "色好き集まれ", users_path, class: "navbar-brand text-black" %>
+        <%= link_to users_path, class: "logo_design" do %>
+          <%= image_tag("logo_design.png", class: "w-100" ) %>
+        <% end %>
       <% elsif admin_signed_in? %>
-        <%= link_to "色好き集まれ", admin_users_path, class: "navbar-brand text-black" %>
+        <%= link_to admin_users_path, class: "logo_design" do %>
+          <%= image_tag("logo_design.png", class: "w-100" ) %>
+        <% end %>
       <% else %>
-        <%= link_to "色好き集まれ", root_path, class: "navbar-brand text-black" %>
+        <%= link_to root_path, class: "logo_design" do %>
+          <%= image_tag("logo_design.png", class: "w-100" ) %>
+        <% end %>
       <% end %>
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
