@@ -1,10 +1,9 @@
 <div class='container'>
-  <div class='row'>
-    <div class="d-flex justify-content-center bg-light">
-      <p>投稿編集</p>
-    </div>
+  <div class="mx-auto w-50 bg-light text-center">
+    <h3>投稿編集</h3>
+  </div>
 
-  <div class="col-md-6 offset-md-3">
+  <div class="d-flex justify-content-center">
   <%= form_with model: @post, url: post_path(@post), method: :patch do |f| %>
     <table class="table">
       <tr>
@@ -20,11 +19,10 @@
         <td style="border:none;"><%= f.text_field :content, class: 'form-control post_content' %></td>
       </tr>
     </table>
-    <div class="col d-flex justify-content-center">
-      <%= f.submit '投稿する', class:"btn btn-success center" %>
+    <div class="p-2 d-flex justify-content-center">
+      <%= f.submit '投稿する', class:"btn btn-success" %>
     </div>
   </div>
   <% end %>
 
-  </div>
 </div>
