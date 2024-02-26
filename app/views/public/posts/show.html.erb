@@ -29,10 +29,11 @@
       </table>
 
       <div id="comment_index">
-      <%= render "public/comments/index", post: @post %>
+        <%= render "public/comments/index", post: @post %>
       </div>
-      <%= render "public/comments/form", post: @post, comment: @comment %>
-
+      <div>
+        <%= render "public/comments/form", post: @post, comment: @comment %>
+      </div>
     </div>
   </div>
 </div>
