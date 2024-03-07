@@ -8,12 +8,21 @@
   		<h2>投稿詳細</h2>
   		<table class='table'>
   		  <tr>
-          <td><%= link_to(@post.user) do %>
-            <%= image_tag @post.user.get_profile_image, size:"100x100" %><br>
-            <%= @post.user.user_name %>
+          <td>
+            <%= link_to(@post.user) do %>
+              <%= image_tag @post.user.get_profile_image, size:"100x100" %><br>
+              <%= @post.user.user_name %>
             <% end %>
           </td>
-          <td><%= link_to @post.title, @post %></td>
+          <td>
+            <%= image_tag @post.get_image, size:"100x100" %>
+          </td>
+          <td class="tag-box">
+            <% @post.tags.each do |tag| %>
+              <%= tag.name %>
+            <% end %>
+          </td>
+          <td><%= @post.title %></td>
           <td><%= @post.content %></td>
           <td id="favorite_btn_<%= @post.id %>">
             <%= render "public/favorites/btn", post: @post %>

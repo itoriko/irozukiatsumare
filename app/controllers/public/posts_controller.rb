@@ -22,11 +22,15 @@ class Public::PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    tags = Vision.get_image_data(post_params[:image])
     @color = Color.find(params[:color_id])
     @post.user_id = current_user.id
     @post.color_id = @color.id
     if @post.save
-      flash[:notice] = "投稿しました！"
+      tags.each do |tag|
+        @post.tags.create(name: tag)
+      end
+      flash[:notice] = "投稿しました"
       redirect_to post_path(@post.id)
     else
       @posts = Post.all
@@ -46,7 +50,7 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     if @post.update(post_params)
       redirect_to post_path(@post)
-      flash[:notice] = "投稿の更新をしました！"
+      flash[:notice] = "投稿の更新をしました"
     else
       render "edit"
     end
@@ -61,6 +65,6 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :content, :image)
+    params.require(:post).permit(:title, :content, :image, :profile_image)
   end
 end

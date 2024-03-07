@@ -2,16 +2,21 @@ class Post < ApplicationRecord
   belongs_to :user
   belongs_to :color
 
-  has_one_attached :image
-
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :tags, dependent: :destroy
+
+  has_one_attached :image
 
   validates :title,presence:true
   validates :content,presence:true,length:{maximum:200}
 
   def get_profile_image
-    (profile_image.attached?) ? profile_image : 'no_image.jpg'
+    (profile_image.attached?) ? profile_image : 'no_profile.png'
+  end
+
+  def get_image
+    (image.attached?) ? image : 'no_image.jpg'
   end
 
   def favorited_by?(user)
