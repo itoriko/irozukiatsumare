@@ -22,13 +22,17 @@ class Public::PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    tags = Vision.get_image_data(post_params[:image])
+    if post_params[:image].present?
+      tags = Vision.get_image_data(post_params[:image])
+    end
     @color = Color.find(params[:color_id])
     @post.user_id = current_user.id
     @post.color_id = @color.id
     if @post.save
-      tags.each do |tag|
-        @post.tags.create(name: tag)
+      if post_params[:image].present?
+        tags.each do |tag|
+          @post.tags.create(name: tag)
+        end
       end
       flash[:notice] = "投稿しました"
       redirect_to post_path(@post.id)
@@ -48,7 +52,14 @@ class Public::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
+    tags = Vision.get_image_data(post_params[:image])
     if @post.update(post_params)
+      @post.tags.destroy_all
+      if post_params[:image].present?
+        tags.each do |tag|
+          @post.tags.create(name: tag)
+        end
+      end
       redirect_to post_path(@post)
       flash[:notice] = "投稿の更新をしました"
     else
