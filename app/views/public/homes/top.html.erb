@@ -2,12 +2,20 @@
   <div class="row">
     <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
       <%= image_tag("logo_design.png", class: "w-100" ) %>
-      <p>色を通じて、コミュニティを作りましょう！</p>
+      <div id="unique-section">
+      みなさんは、男性なら黒や<span style="color: blue;">青</span>、
+      女性なら<span style="color: pink;">ピンク</span>や<span style="color: red;">赤</span>等と言った<br>
+      色の先入観、価値観に違和感を感じませんか？<br>
+      このサイトはその事に捉われずに、さまざまな人と意見交換ができる場所です。<br>
+      早速、自分だけの色彩コミュニティを作りましょう！<br>
+      </div>
 
-      <div class="row">
-        <p>まずはお試しでこのサイトを見てみましょう！</p>
-        <%= link_to "ゲストログイン（閲覧用）", guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
+      <div class="p-3 row">
+        <div class="col text-center" style="font-size: 20px;">
+          まずは、お試しでこのサイトを見てみましょう！
+        </div>
+        <%= link_to "ゲストログイン（閲覧用）", guest_sign_in_path, class: "btn btn-secondary btn-md btn-block mb-3 sign_in", method: :post %>
       </div>
     </div>
   </div>
-</div>
+</div>1
