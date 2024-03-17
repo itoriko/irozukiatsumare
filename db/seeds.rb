@@ -7,9 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 puts "seedの実行を開始"
 
-Admin.create!(
-  email: 'admin@admin',
-  password: 'test_test'
-)
+Admin.find_or_create_by!(email: "admin@admin") do |admin|
+  admin.password = "test_test"
+end
 
 puts "seedの実行が完了しました"
