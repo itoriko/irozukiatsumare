@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="mx-auto w-50 bg-light text-center">
+  <div class="mx-auto w-50 text-center">
     <h3><%= @user.user_name %>さんの情報編集</h3>
   </div>
 
@@ -44,11 +44,14 @@
       <tr>
         <td><%= f.label :is_active, "会員ステータス" %></td>
         <td>
-          <div class="col-3">
+          <span>
             <%= f.radio_button :is_active, true, id:'inputStatusTrue' %>
             <label for="inputStatusTrue" class="col-form-label">有効</label>
+          </span>
+          <span>
             <%= f.radio_button :is_active, false, id:'inputStatueFalse' %>
             <label for="inputStatusFalse" class="col-form-label">退会</label>
+          </span>
           </div>
         </td>
       </tr>
