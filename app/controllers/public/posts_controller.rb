@@ -1,5 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!
+  before_action :user_check, only: [:edit, :update, :destroy]
 
   def new
     @post = Post.new
@@ -34,25 +35,22 @@ class Public::PostsController < ApplicationController
           @post.tags.create(name: tag)
         end
       end
-      flash[:notice] = "投稿しました"
+      flash[:notice] = "投稿しました。"
       redirect_to post_path(@post.id)
     else
       @posts = Post.all
       @user = current_user
+      flash[:alert] = "投稿に失敗しました。"
       render :index
     end
   end
 
-  def edit
-    @post = Post.find(params[:id])
-    unless @post.user_id == current_user.id
-      redirect_to posts_path
-    end
-  end
+  def edit; end
 
   def update
-    @post = Post.find(params[:id])
-    tags = Vision.get_image_data(post_params[:image])
+    if post_params[:image].present?
+      tags = Vision.get_image_data(post_params[:image])
+    end
     if @post.update(post_params)
       @post.tags.destroy_all
       if post_params[:image].present?
@@ -61,15 +59,15 @@ class Public::PostsController < ApplicationController
         end
       end
       redirect_to post_path(@post)
-      flash[:notice] = "投稿の更新をしました"
+      flash[:notice] = "投稿の更新をしました。"
     else
+      flash[:alert] = "投稿の更新に失敗しました。"
       render "edit"
     end
   end
 
   def destroy
-    post = Post.find(params[:id])
-    post.destroy
+    @post.destroy
     redirect_to posts_path
   end
 
@@ -77,5 +75,12 @@ class Public::PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :content, :image, :profile_image)
+  end
+
+  def user_check
+    @post = Post.find(params[:id])
+    unless @post.user_id == current_user.id
+      redirect_to posts_path, alert: "不正な処理です。"
+    end
   end
 end

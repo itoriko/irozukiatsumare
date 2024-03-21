@@ -8,12 +8,13 @@
       <tr>
         <th>投稿ID</th>
         <th>色彩グループ</th>
+        <th>投稿画像</th>
         <th>タイトル</th>
         <th>投稿内容</th>
       </tr>
     </thead>
     <tbody>
-      <% Post.all.each do |post| %>
+      <% @posts.each do |post| %>
       <tr>
         <td><%= post.id %></td>
         <td>
@@ -21,11 +22,12 @@
           <%= post.color.name %>
           <% end %>
         </td>
+        <td><%= image_tag post.get_image, size:"100x100", class: "my-2" %></td>
         <td><%= post.title %></td>
         <td><%= post.content %></td>
       </tr>
       <% end %>
     </tbody>
   </table>
-
+  <%= paginate @posts %>
 </div>
