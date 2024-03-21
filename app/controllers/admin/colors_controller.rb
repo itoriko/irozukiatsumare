@@ -9,9 +9,11 @@ class Admin::ColorsController < ApplicationController
   def create
     @color = Color.new(color_params)
     if @color.save
-      redirect_to admin_colors_path, notice: "実装する色を追加しました"
+      flash[:notice] = "実装する色を追加しました。"
+      redirect_to admin_colors_path
     else
       @colors = Color.all.page(params[:page]).per(10)
+      flash.now[:alert] = "実装に失敗しました。"
       render :index
     end
   end
@@ -23,7 +25,7 @@ class Admin::ColorsController < ApplicationController
   def update
     @color = Color.find(params[:id])
     if @color.update(color_params)
-      redirect_to admin_colors_path, notice: "実装する色を変更しました"
+      redirect_to admin_colors_path, notice: "実装する色を変更しました。"
     else
       render :edit
     end
@@ -32,7 +34,7 @@ class Admin::ColorsController < ApplicationController
   def destroy
     color = Color.find(params[:id])
     color.destroy
-    redirect_to admin_colors_path, notice: "実装する色を削除しました"
+    redirect_to admin_colors_path, notice: "実装する色を削除しました。"
   end
 
   private

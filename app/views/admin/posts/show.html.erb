@@ -11,8 +11,13 @@
       </tr>
 
       <tr>
-        <td>色彩ID</td>
-        <td><%= @post.color_id %></td>
+        <td>色彩名</td>
+        <td><%= @post.color.name %></td>
+      </tr>
+
+      <tr>
+        <td>投稿画像</td>
+        <td><%= image_tag @post.get_image, size:"100x100" %></td>
       </tr>
 
       <tr>

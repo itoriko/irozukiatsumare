@@ -17,6 +17,11 @@
       </tr>
 
       <tr>
+        <td><%= f.label :image, "投稿画像" %></td>
+        <td><%= f.file_field :image, accept: "image/*" %></td>
+      </tr>
+
+      <tr>
         <td><%= f.label :title, "タイトル" %></td>
         <td><%= f.text_field :title %></td>
       </tr>

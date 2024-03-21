@@ -23,3 +23,22 @@ ul {
 .top-nav > a {
  width: 250px;
 }
+
+.flash-message {
+  border-radius: 5px;
+  padding: 16px 24px;
+  margin: 16px auto; /* 上下は16px、左右は自動的に中央配置 */
+  display: table; /* 中央配置を可能にする */
+}
+
+.flash-message.notice {
+  background-color: #bcdfff;
+  color: #0067C0;
+  border: solid 1px #0067C0;
+}
+
+.flash-message.alert {
+  background-color: #ffd4d1;
+  color: #930403;
+  border: solid 1px #930403;
+}
