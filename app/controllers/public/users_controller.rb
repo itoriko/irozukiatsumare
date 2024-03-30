@@ -33,7 +33,7 @@ class Public::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:notice] = "情報を更新しました！"
+      flash[:notice] = "情報を更新しました。"
       redirect_to user_path(@user.id)
     else
       render :edit
@@ -61,6 +61,7 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     unless @user == current_user
       redirect_to user_path(current_user)
+      flash[:alert] = "不正な操作です。"
     end
   end
 

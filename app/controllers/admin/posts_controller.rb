@@ -18,6 +18,7 @@ class Admin::PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to admin_posts_path(@post), notice: "投稿内容を変更しました。"
     else
+      flash.now[:alert] = "変更に失敗しました。"
       render :edit
     end
   end

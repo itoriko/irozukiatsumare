@@ -27,6 +27,7 @@ class Admin::ColorsController < ApplicationController
     if @color.update(color_params)
       redirect_to admin_colors_path, notice: "実装する色を変更しました。"
     else
+      flash.now[:alert] = "変更に失敗しました。"
       render :edit
     end
   end
