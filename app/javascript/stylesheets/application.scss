@@ -2,43 +2,61 @@
 @import url('https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap');
 
 * {
- margin: 0;
- padding: 0;
- box-sizing: border-box;
- font-family: 'Kosugi Maru', sans-serif;
- color: #333333;
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: 'Kosugi Maru', sans-serif;
+color: #333333;
 }
 
 body {
- background: linear-gradient(45deg, #ffd1dc, #ffebcd, #d4f1f4, #ffe4e1, #c9e9f8, #f0d9e7, #c7ecee);
+background: linear-gradient(45deg, #ffd1dc, #ffebcd, #d4f1f4, #ffe4e1, #c9e9f8, #f0d9e7, #c7ecee);
 }
 .container {
- background-color:white;
+background-color:white;
 }
 
 ul {
- list-style-type: none;
+list-style-type: none;
 }
 
 .top-nav > a {
- width: 250px;
+width: 250px;
 }
 
 .flash-message {
-  border-radius: 5px;
-  padding: 16px 24px;
-  margin: 16px auto; /* 上下は16px、左右は自動的に中央配置 */
-  display: table; /* 中央配置を可能にする */
+border-radius: 5px;
+padding: 16px 24px;
+margin: 16px auto; /* 上下は16px、左右は自動的に中央配置 */
+display: table; /* 中央配置を可能にする */
 }
 
 .flash-message.notice {
-  background-color: #bcdfff;
-  color: #0067C0;
-  border: solid 1px #0067C0;
+background-color: #bcdfff;
+color: #0067C0;
+border: solid 1px #0067C0;
 }
 
 .flash-message.alert {
-  background-color: #ffd4d1;
-  color: #930403;
-  border: solid 1px #930403;
+background-color: #ffd4d1;
+color: #930403;
+border: solid 1px #930403;
+}
+
+.pagination>li>a {
+border: none;
+color: #696969;
+}
+
+.pagination>.active>a {
+background: #93c9ff;
+border-radius: 15px;
+}
+
+.pagination>li>a:hover {
+border-radius: 15px;
+}
+
+.pagination {
+justify-content: center;
 }
