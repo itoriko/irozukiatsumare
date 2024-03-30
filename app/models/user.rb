@@ -46,6 +46,10 @@ class User < ApplicationRecord
     end
   end
 
+  def active?
+    is_active
+  end
+
   def guest_user?
     email == GUEST_USER_EMAIL
   end

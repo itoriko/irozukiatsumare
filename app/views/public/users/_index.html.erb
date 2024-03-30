@@ -9,14 +9,17 @@
   <tbody>
     <% users.each do |user| %>
       <tr>
-        <td><%= image_tag user.get_profile_image, size: '50x50' %></td>
-        <td><%= user.user_name %></td>
-        <td>フォロー数: <%= user.followings.count %></td>
-        <td>フォロワー数: <%= user.followers.count %></td>
-        <td><%= render "public/relationships/btn", user: user, options: { class: "follow-link" } %></td>
-        <td><%= link_to '詳細', user, class: "user_#{user.id}" %></td>
+        <% if user.active? %>
+          <td><%= image_tag user.get_profile_image, size: '50x50' %></td>
+          <td><%= user.user_name %></td>
+          <td>フォロー数: <%= user.followings.count %></td>
+          <td>フォロワー数: <%= user.followers.count %></td>
+          <td><%= render "public/relationships/btn", user: user, options: { class: "follow-link" } %></td>
+          <td><%= link_to '詳細', user, class: "user_#{user.id}" %></td>
+        <% else %>
+          <td colspan="6">既に退会したユーザーです。</td>
+        <% end %>
       </tr>
     <% end %>
-    <%#= paginate users %>
   </tbody>
 </table>

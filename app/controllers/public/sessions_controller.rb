@@ -34,9 +34,8 @@ class Public::SessionsController < Devise::SessionsController
     @user = User.find_by(email: params[:user][:email])
     return if @user.nil?
     return unless @user.valid_password?(params[:user][:password])
-
     if !@user.is_active?
-      flash[:alert] = "ログインしていません。"
+      flash[:alert] = "メールアドレスまたはパスワードが違います。"
       redirect_to new_user_session_path
       return
     else

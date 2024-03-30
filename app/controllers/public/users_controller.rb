@@ -48,7 +48,7 @@ class Public::UsersController < ApplicationController
     @user = current_user
     @user.update(is_active: false)
     reset_session
-    redirect_to root_path, notice: "今までのご利用、誠に有難う御座いました。"
+    redirect_to root_path, notice: "今までのご利用、誠に有難う御座いました。またのご利用を心よりお待ちしております。"
   end
 
   private
