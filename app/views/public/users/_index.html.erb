@@ -16,8 +16,6 @@
           <td>フォロワー数: <%= user.followers.count %></td>
           <td><%= render "public/relationships/btn", user: user, options: { class: "follow-link" } %></td>
           <td><%= link_to '詳細', user, class: "user_#{user.id}" %></td>
-        <% else %>
-          <td colspan="6">既に退会したユーザーです。</td>
         <% end %>
       </tr>
     <% end %>
